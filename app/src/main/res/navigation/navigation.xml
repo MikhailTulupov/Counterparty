@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/listCounterpartyFragment">
+
+    <fragment
+        android:id="@+id/listCounterpartyFragment"
+        android:name="mikhail.tulupov.application.counterparty.ui.fragments.ListCounterpartyFragment"
+        android:label="fragment_list_counterparty"
+        tools:layout="@layout/fragment_list_counterparty" >
+        <action
+            android:id="@+id/action_listCounterpartyFragment_to_detailCounterpartyFragment"
+            app:destination="@id/detailCounterpartyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailCounterpartyFragment"
+        android:name="mikhail.tulupov.application.counterparty.ui.fragments.DetailCounterpartyFragment"
+        android:label="fragment_detail_counterparty"
+        tools:layout="@layout/fragment_detail_counterparty" />
+</navigation>
