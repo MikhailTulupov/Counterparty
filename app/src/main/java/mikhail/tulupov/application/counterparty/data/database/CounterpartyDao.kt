@@ -1,6 +1,7 @@
 package mikhail.tulupov.application.counterparty.data.database
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 import mikhail.tulupov.application.counterparty.data.models.Counterparty
 import mikhail.tulupov.application.counterparty.utilities.DATABASE_TABLE_NAME
 import java.util.*
@@ -9,18 +10,18 @@ import java.util.*
 interface CounterpartyDao {
 
     @Query("SELECT * FROM $DATABASE_TABLE_NAME")
-    fun getAllCounterparty(): List<Counterparty>
+    fun getAllCounterparty(): Flow<List<Counterparty>>
 
     @Query("SELECT * FROM counterparty WHERE id = :id")
-    fun getCounterpartyById(id: UUID): Counterparty
+    fun getCounterpartyById(id: UUID): Flow<Counterparty>
 
-    @Insert
-    fun insertCounterparty(counterparty: Counterparty)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertCounterparty(counterparty: Counterparty)
 
     @Update
-    fun updateCounterparty(counterparty: Counterparty)
+    suspend fun updateCounterparty(counterparty: Counterparty)
 
     @Delete
-    fun deleteCounterparty(counterparty: Counterparty)
+    suspend fun deleteCounterparty(counterparty: Counterparty): Int
 
 }
