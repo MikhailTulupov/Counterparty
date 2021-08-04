@@ -18,13 +18,16 @@ abstract class CounterpartyDatabase : RoomDatabase() {
     companion object {
         private var instance: CounterpartyDatabase? = null
 
-        fun getInstance(context: Context): CounterpartyDatabase = instance ?: kotlin.run {
-            instance =
-                Room.databaseBuilder(context, CounterpartyDatabase::class.java, DATABASE_NAME)
-                    .build()
-            instance!!
+        fun getDatabase(context: Context): CounterpartyDatabase {
+            return instance ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    CounterpartyDatabase::class.java,
+                    DATABASE_NAME
+                ).build()
+                this.instance = instance
+                instance
+            }
         }
-
-
     }
 }
