@@ -7,4 +7,6 @@
     <string name="phone_icon_description">Phone icon</string>
     <string name="email_icon_description">email icon</string>
     <string name="email_hint">Email</string>
+    <string name="title_action_bar_for_detail_main">Contact</string>'
+    <string name="title_action_bar_for_detail_edit">Edit Contact</string>
 </resources>
