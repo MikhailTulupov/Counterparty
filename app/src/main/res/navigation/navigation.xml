@@ -8,15 +8,26 @@
     <fragment
         android:id="@+id/listCounterpartyFragment"
         android:name="mikhail.tulupov.application.counterparty.ui.fragments.ListCounterpartyFragment"
-        android:label="fragment_list_counterparty"
-        tools:layout="@layout/fragment_list_counterparty" >
+        tools:layout="@layout/fragment_list_counterparty">
         <action
             android:id="@+id/action_listCounterpartyFragment_to_detailCounterpartyFragment"
-            app:destination="@id/detailCounterpartyFragment" />
+            app:destination="@id/detailCounterpartyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/detailCounterpartyFragment"
         android:name="mikhail.tulupov.application.counterparty.ui.fragments.DetailCounterpartyFragment"
-        android:label="fragment_detail_counterparty"
-        tools:layout="@layout/fragment_detail_counterparty" />
+        android:label="@string/title_action_bar_for_detail_main"
+        tools:layout="@layout/fragment_detail_counterparty">
+        <argument
+            android:name="isEdit"
+            app:argType="boolean" />
+        <argument
+            android:name="id"
+            app:argType="java.util.UUID"
+            app:nullable="true" />
+    </fragment>
 </navigation>
