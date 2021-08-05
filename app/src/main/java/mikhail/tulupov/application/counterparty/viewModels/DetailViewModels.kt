@@ -1,26 +1,27 @@
 package mikhail.tulupov.application.counterparty.viewModels
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
+import kotlinx.coroutines.launch
 import mikhail.tulupov.application.counterparty.data.models.Counterparty
-import mikhail.tulupov.application.counterparty.data.repositories.CounterpartyRepository
+import mikhail.tulupov.application.counterparty.ui.CounterpartyApplication
 import java.util.*
 
 class DetailViewModels(application: Application): AndroidViewModel(application) {
 
-    private val repository = CounterpartyRepository.getInstance(application)
+    private val repository = (application as CounterpartyApplication).repository
 
-    fun getCounterpartyById(id: UUID): LiveData<Counterparty> =
-        MutableLiveData(repository.getCounterpartyById(id))
-
-    fun deleteCounterparty(counterparty: Counterparty): Unit =
-        repository.deleteCounterparty(counterparty)
-
-    fun updateCounterparty(counterparty: Counterparty): Unit =
-        repository.updateCounterparty(counterparty)
-
-    fun insertCounterparty(counterparty: Counterparty): Unit =
+    fun addCounterparty(counterparty: Counterparty) = viewModelScope.launch {
         repository.addCounterparty(counterparty)
+    }
+
+    fun updateCounterparty(counterparty: Counterparty) = viewModelScope.launch {
+        repository.updateCounterparty(counterparty)
+    }
+
+    fun deleteCounterparty(counterparty: Counterparty) = viewModelScope.launch {
+        repository.deleteCounterparty(counterparty)
+    }
+
+    fun getCounterpartyById(id: UUID) = repository.getCounterpartyById(id).asLiveData()
 }
