@@ -21,11 +21,6 @@ data class Counterparty(
     var avatar: Bitmap? = null
 ) {
 
-
-    companion object {
-
-    }
-
     object CounterpartyFactory {
 
         fun makeCounterparty(name: String, phoneNumber: String) = Counterparty(
