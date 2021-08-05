@@ -1,18 +1,14 @@
 package mikhail.tulupov.application.counterparty.viewModels
 
 import android.app.Application
-import android.content.Context
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
 import mikhail.tulupov.application.counterparty.data.models.Counterparty
-import mikhail.tulupov.application.counterparty.data.repositories.CounterpartyRepository
+import mikhail.tulupov.application.counterparty.ui.CounterpartyApplication
 
-class ListViewModel(application: Application): AndroidViewModel(application) {
+class ListViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = CounterpartyRepository.getInstance(application.applicationContext)
+    private val repository = (application as CounterpartyApplication).repository
 
-    private val counterpartyListLiveData: MutableLiveData<List<Counterparty>> =
-        MutableLiveData(repository.getAllCounterparty())
+    val allCounterparty: LiveData<List<Counterparty>> = repository.getAllCounterparty().asLiveData()
 
-    fun getListLiveDataCounterparty() = counterpartyListLiveData
 }
