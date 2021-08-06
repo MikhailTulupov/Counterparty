@@ -4,12 +4,12 @@ import android.app.Application
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import mikhail.tulupov.application.counterparty.data.models.Counterparty
-import mikhail.tulupov.application.counterparty.ui.CounterpartyApplication
+import mikhail.tulupov.application.counterparty.data.repositories.CounterpartyRepository
 import java.util.*
 
 class DetailViewModels(application: Application): AndroidViewModel(application) {
 
-    private val repository = (application as CounterpartyApplication).repository
+    private val repository = CounterpartyRepository.getInstance(application)
 
     fun addCounterparty(counterparty: Counterparty) = viewModelScope.launch {
         repository.addCounterparty(counterparty)
