@@ -10,7 +10,7 @@ import java.util.*
 data class Counterparty(
     @PrimaryKey
     @ColumnInfo(name = COLUMN_ID, typeAffinity = ColumnInfo.TEXT)
-    var id: UUID = setId(),
+    val id: UUID = setId(),
     @ColumnInfo(name = COLUMN_NAME, typeAffinity = ColumnInfo.TEXT)
     var name: String,
     @ColumnInfo(name = COLUMN_PHONE_NUMBER, typeAffinity = ColumnInfo.TEXT)
