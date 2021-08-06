@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Counterparty</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add">add counterparty</string>
+    <string name="name_hint">Name</string>
+    <string name="phone_number_hint">Phone number</string>
+    <string name="phone_icon_description">Phone icon</string>
+    <string name="email_icon_description">email icon</string>
+    <string name="email_hint">Email</string>
+    <string name="title_action_bar_for_detail_main">Contact</string>'
+    <string name="title_action_bar_for_detail_edit">Edit Contact</string>
+    <string name="menu_item_delete">Delete</string>
+    <string name="call_label">Call</string>
+    <string name="email_label">Email</string>
 </resources>
