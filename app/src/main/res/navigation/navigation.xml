@@ -29,5 +29,9 @@
             android:name="id"
             app:argType="java.util.UUID"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_detailCounterpartyFragment_to_listCounterpartyFragment"
+            app:destination="@id/listCounterpartyFragment"
+            app:enterAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>
